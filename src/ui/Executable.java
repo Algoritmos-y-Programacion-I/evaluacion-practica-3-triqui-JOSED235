@@ -15,14 +15,16 @@ public class Executable {
     }
 
     public void run(boolean flag) {
-
         flag = false;
 
         while (!flag) {
-
             System.out.println("\n\nBienvenido al menu:\n");
-            System.out.println("Opciones:\n" + "1. Imprimir tablero \n" + "2. Jugada de la máquina \n"
-                    + "3. Jugada de humano \n" + "4. Verificar ganador \n" + "5. Salir del programa \n");
+            System.out.println("Opciones:\n" + 
+                               "1. Imprimir tablero \n" + 
+                               "2. Jugada de la máquina \n" +
+                               "3. Jugada de humano \n" + 
+                               "4. Verificar ganador \n" + 
+                               "5. Salir del programa \n");
 
             int option = reader.nextInt();
             reader.nextLine();
@@ -48,9 +50,7 @@ public class Executable {
                     System.out.print("Por favor ingrese una opcion valida");
                     continue;
             }
-
         }
-
     }
 
     public static void main(String[] args) {
@@ -69,10 +69,30 @@ public class Executable {
     }
 
     private void jugadaHumano() {
-        // Implementación de jugada de humano
+        System.out.println("NOTA: Recuerda que al ser un juego dentro de una matriz 3x3 el primer elemento va desde 0 y esta hasta 2");
+        System.out.println("Por favor indique la coordenada i de su jugada : ");
+        int c = reader.nextInt();
+        while (c > 2 || c < 0) {
+            System.out.println("Digite un número válido");
+            c = reader.nextInt();
+        }
+        System.out.println("Por favor indique la segunda coordenada de su jugada:");
+        int i = reader.nextInt();
+        while (i > 2 || i < 0) {
+            System.out.println("Digite un número válido");
+            i = reader.nextInt();
+        }
+        // Verifica si la casilla está ocupada, si está ocupada pedirá nuevas coordenadas
+        cont.jugadaUsuario(c, i);
+        imprimirTablero();
     }
 
     private void validarGanador() {
-        // Implementación de la validación si alguien ya ganó el triqui
+        String resultado = cont.validarGanar();
+        if (resultado.equals("")) {
+            System.out.println("No hay ganador aún.");
+        } else {
+            System.out.println(resultado);
+        }
     }
 }
