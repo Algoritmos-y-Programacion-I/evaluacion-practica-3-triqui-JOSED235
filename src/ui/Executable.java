@@ -82,7 +82,7 @@ public class Executable {
             System.out.println("Digite un número válido");
             i = reader.nextInt();
         }
-        // Verifica si la casilla está ocupada, si está ocupada pedirá nuevas coordenadas
+  
         cont.jugadaUsuario(c, i);
         imprimirTablero();
     }
